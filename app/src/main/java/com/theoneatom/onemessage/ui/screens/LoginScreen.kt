@@ -27,6 +27,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -344,10 +346,25 @@ fun LoginScreen(onLoginSuccess: () -> Unit = {}) {
                                                                 selectedCountry.phoneLength
                                                 ) {
                                                         isLoading = true
-                                                        // TODO: Call backend to send OTP
-                                                        // For now, simulate
-                                                        showOtpInput = true
-                                                        isLoading = false
+                                                        errorMessage = null
+                                                        fullPhoneNumber =
+                                                                "${selectedCountry.dialCode}$phoneNumber"
+
+                                                        firebaseAuth?.sendOtp(
+                                                                phoneNumber = fullPhoneNumber,
+                                                                onCodeSent = {
+                                                                        isLoading = false
+                                                                        showOtpInput = true
+                                                                },
+                                                                onVerificationCompleted = {
+                                                                        isLoading = false
+                                                                        onLoginSuccess()
+                                                                },
+                                                                onError = { error ->
+                                                                        isLoading = false
+                                                                        errorMessage = error
+                                                                }
+                                                        )
                                                 } else {
                                                         errorMessage =
                                                                 "Phone number must be ${selectedCountry.phoneLength} digits for ${selectedCountry.name}"
@@ -369,17 +386,38 @@ fun LoginScreen(onLoginSuccess: () -> Unit = {}) {
                                                 errorMessage = null
                                         },
                                         onVerifyOtp = {
-                                                if (otpCode.length == 4) {
+                                                if (otpCode.length == 6) {
                                                         isLoading = true
-                                                        // TODO: Call backend to verify OTP
-                                                        // For now, simulate success
-                                                        onLoginSuccess()
+                                                        errorMessage = null
+                                                        firebaseAuth?.verifyOtp(
+                                                                code = otpCode,
+                                                                onSuccess = {
+                                                                        isLoading = false
+                                                                        onLoginSuccess()
+                                                                },
+                                                                onError = { error ->
+                                                                        isLoading = false
+                                                                        errorMessage = error
+                                                                }
+                                                        )
                                                 } else {
-                                                        errorMessage = "Please enter a 4-digit code"
+                                                        errorMessage = "Please enter a 6-digit code"
                                                 }
                                         },
                                         onResendOtp = {
-                                                // TODO: Resend OTP
+                                                isLoading = true
+                                                firebaseAuth?.resendOtp(
+                                                        phoneNumber = fullPhoneNumber,
+                                                        onCodeSent = {
+                                                                isLoading = false
+                                                                errorMessage =
+                                                                        "Code resent successfully"
+                                                        },
+                                                        onError = { error ->
+                                                                isLoading = false
+                                                                errorMessage = error
+                                                        }
+                                                )
                                         },
                                         phoneNumber = "${selectedCountry.dialCode} $phoneNumber",
                                         isLoading = isLoading,
@@ -767,6 +805,10 @@ private fun OtpInput(
         isLoading: Boolean,
         onBack: () -> Unit
 ) {
+        val focusRequester = remember { FocusRequester() }
+
+        LaunchedEffect(Unit) { focusRequester.requestFocus() }
+
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                         text = "Enter verification code",
@@ -784,13 +826,16 @@ private fun OtpInput(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // OTP boxes (4 digits)
-                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                        repeat(4) { index ->
+                // OTP boxes (6 digits)
+                Row(
+                        modifier = Modifier.clickable { focusRequester.requestFocus() },
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                        repeat(6) { index ->
                                 val char = otpCode.getOrNull(index)?.toString() ?: ""
                                 Box(
                                         modifier =
-                                                Modifier.size(56.dp)
+                                                Modifier.size(45.dp)
                                                         .background(
                                                                 if (char.isNotEmpty())
                                                                         OneMessageColors
@@ -809,21 +854,21 @@ private fun OtpInput(
                                 ) {
                                         Text(
                                                 text = char,
-                                                style = MaterialTheme.typography.headlineLarge,
+                                                style = MaterialTheme.typography.titleLarge,
                                                 color = OneMessageColors.TextPrimary
                                         )
                                 }
                         }
                 }
 
-                // Hidden text field for OTP input (4 digits)
+                // Hidden text field for OTP input (6 digits)
                 BasicTextField(
                         value = otpCode,
                         onValueChange = {
-                                if (it.length <= 4 && it.all { c -> c.isDigit() }) onOtpChange(it)
+                                if (it.length <= 6 && it.all { c -> c.isDigit() }) onOtpChange(it)
                         },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.size(1.dp)
+                        modifier = Modifier.size(1.dp).focusRequester(focusRequester)
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
@@ -853,7 +898,7 @@ private fun OtpInput(
                 // Verify button
                 Button(
                         onClick = onVerifyOtp,
-                        enabled = otpCode.length == 4 && !isLoading,
+                        enabled = otpCode.length == 6 && !isLoading,
                         modifier = Modifier.fillMaxWidth().height(56.dp),
                         shape = RoundedCornerShape(28.dp),
                         colors =
