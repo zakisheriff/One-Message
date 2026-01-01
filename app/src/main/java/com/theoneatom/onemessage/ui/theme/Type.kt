@@ -1,4 +1,4 @@
-package com.example.onemessage.ui.theme
+package com.theoneatom.onemessage.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

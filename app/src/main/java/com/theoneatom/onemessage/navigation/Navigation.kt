@@ -1,13 +1,13 @@
-package com.example.onemessage.navigation
+package com.theoneatom.onemessage.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.onemessage.ui.screens.ChatListScreen
-import com.example.onemessage.ui.screens.ChatScreen
-import com.example.onemessage.ui.screens.LoginScreen
+import com.theoneatom.onemessage.ui.screens.ChatListScreen
+import com.theoneatom.onemessage.ui.screens.ChatScreen
+import com.theoneatom.onemessage.ui.screens.LoginScreen
 
 sealed class Screen(val route: String) {
     object Login : Screen("login")

@@ -1,4 +1,4 @@
-package com.example.onemessage.ui.screens
+package com.theoneatom.onemessage.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,7 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.onemessage.ui.theme.OneMessageColors
+import com.theoneatom.onemessage.ui.theme.OneMessageColors
 
 data class Conversation(
         val id: String,

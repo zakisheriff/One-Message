@@ -1,5 +1,6 @@
-package com.example.onemessage.ui.screens
+package com.theoneatom.onemessage.ui.screens
 
+import android.app.Activity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -29,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -36,7 +38,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import com.example.onemessage.ui.theme.OneMessageColors
+import com.theoneatom.onemessage.auth.FirebasePhoneAuth
+import com.theoneatom.onemessage.ui.theme.OneMessageColors
 
 // Country data class with phone number length
 data class Country(
@@ -224,6 +227,10 @@ val allCountries =
 
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit = {}) {
+        val context = LocalContext.current
+        val activity = context as? Activity
+        val firebaseAuth = remember { activity?.let { FirebasePhoneAuth(it) } }
+
         var phoneNumber by remember { mutableStateOf("") }
         var otpCode by remember { mutableStateOf("") }
         var showOtpInput by remember { mutableStateOf(false) }
@@ -233,6 +240,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit = {}) {
                 mutableStateOf(allCountries.find { it.code == "LK" } ?: allCountries.first())
         }
         var showCountryPicker by remember { mutableStateOf(false) }
+        var fullPhoneNumber by remember { mutableStateOf("") }
 
         Box(
                 modifier =

@@ -1,4 +1,4 @@
-package com.example.onemessage.ui.screens
+package com.theoneatom.onemessage.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -23,7 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.onemessage.ui.theme.OneMessageColors
+import com.theoneatom.onemessage.ui.theme.OneMessageColors
 
 data class Message(
         val id: String,
