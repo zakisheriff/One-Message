@@ -10,25 +10,25 @@
     --text-primary: #FFFFFF;
     --text-secondary: #E0E0E0;
     --text-muted: #A0A0A0;
-    
+
     /* Glass Effects */
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-blur: 12px;
     --interactive-highlight: rgba(255, 255, 255, 0.08);
-    
+
     /* Shadows */
     --shadow-large: 0 10px 40px rgba(0, 0, 0, 0.4);
     --shadow-glow: 0 0 60px rgba(255, 255, 255, 0.15);
-    
+
     /* Spacing */
     --nav-height: 72px;
     --section-padding: 120px;
     --container-width: 1200px;
-    
+
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-medium: 0.3s ease;
@@ -36,7 +36,9 @@
 }
 
 /* Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -109,10 +111,23 @@ a {
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(30px, -30px) scale(1.05); }
-    50% { transform: translate(-20px, 20px) scale(0.95); }
-    75% { transform: translate(20px, 30px) scale(1.02); }
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(30px, -30px) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(20px, 30px) scale(1.02);
+    }
 }
 
 /* ==========================================
@@ -272,16 +287,30 @@ a {
    ========================================== */
 .hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
+    min-height: 100vh;
     padding: 140px 40px 80px;
     position: relative;
     z-index: 1;
 }
 
+.hero-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
 .hero-content {
     flex: 1;
     max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-title {
@@ -327,6 +356,7 @@ a {
     gap: 16px;
     margin-bottom: 60px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .btn {
@@ -370,11 +400,13 @@ a {
     align-items: center;
     gap: 24px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .stat {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .stat-value {
@@ -539,18 +571,41 @@ a {
     animation: typingBounce 1.4s infinite ease-in-out;
 }
 
-.typing-dots span:nth-child(1) { animation-delay: 0s; }
-.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+.typing-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
 
 @keyframes typingBounce {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-8px); }
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-8px);
+    }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ==========================================
@@ -748,8 +803,15 @@ a {
 }
 
 @keyframes lockPulse {
-    0%, 100% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.05); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
 }
 
 .security-card p {
@@ -928,32 +990,36 @@ a {
    ========================================== */
 @media (max-width: 1024px) {
     .hero {
-        flex-direction: column;
-        text-align: center;
         padding-top: 160px;
     }
-    
+
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 60px;
+    }
+
     .hero-content {
         max-width: 100%;
     }
-    
+
     .hero-actions {
         justify-content: center;
     }
-    
+
     .hero-stats {
         justify-content: center;
     }
-    
+
     .hero-visual {
         margin-top: 60px;
     }
-    
+
     .security-content {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .security-list li {
         justify-content: center;
     }
@@ -963,58 +1029,58 @@ a {
     :root {
         --section-padding: 80px;
     }
-    
+
     .navbar {
         padding: 10px 16px;
     }
-    
+
     .nav-links,
     .nav-cta {
         display: none;
     }
-    
+
     .mobile-menu-btn {
         display: flex;
     }
-    
+
     .mobile-nav.active {
         display: block;
     }
-    
+
     .hero {
         padding: 120px 20px 60px;
     }
-    
+
     .hero-subtitle br {
         display: none;
     }
-    
+
     .hero-stats {
         flex-direction: column;
         gap: 16px;
     }
-    
+
     .stat-divider {
         display: none;
     }
-    
+
     .phone-mockup {
         width: 240px;
         height: 500px;
     }
-    
+
     .section-container {
         padding: 0 20px;
     }
-    
+
     .features-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .platforms-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -1025,17 +1091,17 @@ a {
     .title-line {
         font-size: 2.5rem;
     }
-    
+
     .hero-actions {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .btn {
         width: 100%;
         justify-content: center;
     }
-    
+
     .about-links {
         flex-direction: column;
         gap: 16px;
