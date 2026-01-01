@@ -1,0 +1,94 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+/build/
+/dist/
+*.apk
+*.aab
+*.ipa
+*.app
+*.dSYM/
+
+# Android
+.gradle/
+local.properties
+*.iml
+.idea/
+app/build/
+app/release/
+*.keystore
+!debug.keystore
+captures/
+
+# iOS
+*.xcworkspace/
+*.xcodeproj/xcuserdata/
+Pods/
+DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Firebase
+firebase-service-account.json
+google-services.json
+GoogleService-Info.plist
+
+# Backend specific
+backend/node_modules/
+backend/.env
+
+# Landing page
+landing/.cache/
+
+# Generated files
+*.generated.*

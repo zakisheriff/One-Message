@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Message - Secure Messaging Reimagined</title>
+    <meta name="description" content="End-to-end encrypted messaging with multi-device sync, offline SMS fallback, and Signal Protocol security. Part of The One Atom ecosystem.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Ambient Background Orbs -->
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">💬</span>
+                <span class="logo-text">One Message</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link active">Features</a></li>
+                <li><a href="#security" class="nav-link">Security</a></li>
+                <li><a href="#platforms" class="nav-link">Platforms</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-cta">Download</button>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#platforms">Platforms</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#" class="mobile-cta">Download</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Messaging</span>
+                <span class="title-line title-glow">Reimagined</span>
+            </h1>
+            <p class="hero-subtitle">
+                End-to-end encrypted. Multi-device sync. Offline SMS fallback.
+                <br>The future of private messaging is here.
+            </p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary">
+                    <span class="btn-icon">📱</span>
+                    Get the App
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    Learn More
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">256-bit</span>
+                    <span class="stat-label">AES Encryption</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Private by Default</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">Data Stored on Servers</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="phone-header">
+                        <div class="phone-time">9:41</div>
+                        <div class="phone-notch"></div>
+                        <div class="phone-icons">
+                            <span>📶</span>
+                            <span>🔋</span>
+                        </div>
+                    </div>
+                    <div class="chat-preview">
+                        <div class="chat-header-preview">
+                            <div class="chat-avatar">A</div>
+                            <div class="chat-info">
+                                <span class="chat-name">Alice</span>
+                                <span class="chat-status">Online</span>
+                            </div>
+                            <span class="chat-secure">🔒</span>
+                        </div>
+                        <div class="messages-preview">
+                            <div class="message received">
+                                <span>Hey! Have you tried One Message?</span>
+                            </div>
+                            <div class="message sent">
+                                <span>Yes! The encryption is amazing 🔐</span>
+                            </div>
+                            <div class="message received">
+                                <span>And it works offline too!</span>
+                            </div>
+                            <div class="message sent typing">
+                                <span class="typing-dots">
+                                    <span></span><span></span><span></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Why One Message?</h2>
+                <p class="section-subtitle">Built for privacy, designed for everyone</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>End-to-End Encryption</h3>
+                    <p>Signal Protocol ensures only you and your recipient can read messages. Not even we can access them.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Device Sync</h3>
+                    <p>Seamlessly switch between phone, tablet, and desktop. Your messages follow you everywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>Offline SMS Mode</h3>
+                    <p>No internet? No problem. Messages can be sent via SMS with mobile money billing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Device-Only Storage</h3>
+                    <p>Messages stay on your device. Optional encrypted cloud backup for peace of mind.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Real-time WebSocket delivery. Messages arrive instantly, typing indicators included.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful & Minimal</h3>
+                    <p>Elegant dark interface inspired by premium design. No ads, no clutter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="security">
+        <div class="section-container">
+            <div class="security-content">
+                <div class="security-text">
+                    <span class="security-badge">🛡️ Signal Protocol</span>
+                    <h2 class="section-title">Military-Grade Security</h2>
+                    <p class="section-description">
+                        Your privacy is non-negotiable. One Message uses the same encryption 
+                        trusted by security experts worldwide.
+                    </p>
+                    <ul class="security-list">
+                        <li>
+                            <span class="check">✓</span>
+                            <span>Forward secrecy with rotating encryption keys</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span>AES-256 local storage encryption</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span>Zero-knowledge server architecture</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span>Self-destructing messages (optional)</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span>Open-source cryptographic libraries</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="security-visual">
+                    <div class="security-card glass-panel">
+                        <div class="lock-animation">
+                            <div class="lock-body">
+                                <div class="lock-shackle"></div>
+                                <div class="lock-keyhole"></div>
+                            </div>
+                        </div>
+                        <p>Your messages are encrypted before leaving your device</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section id="platforms" class="platforms">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Available Everywhere</h2>
+                <p class="section-subtitle">Native apps for all your devices</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card glass-panel">
+                    <div class="platform-icon">🤖</div>
+                    <h3>Android</h3>
+                    <p>Native Kotlin app with Material You design</p>
+                    <a href="#" class="platform-btn">Google Play</a>
+                </div>
+                <div class="platform-card glass-panel">
+                    <div class="platform-icon">🍎</div>
+                    <h3>iOS</h3>
+                    <p>Native Swift app optimized for iPhone</p>
+                    <a href="#" class="platform-btn">App Store</a>
+                </div>
+                <div class="platform-card glass-panel coming-soon">
+                    <div class="platform-icon">💻</div>
+                    <h3>Desktop</h3>
+                    <p>Web and Electron apps coming soon</p>
+                    <span class="platform-badge">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-logo">
+                    <span class="atom-icon">⚛️</span>
+                </div>
+                <h2 class="section-title">Part of The One Atom Ecosystem</h2>
+                <p class="section-description">
+                    One Message is built by the team behind The One Atom — 
+                    creating thoughtful, privacy-first digital experiences.
+                </p>
+                <div class="about-links">
+                    <a href="#" class="about-link">Privacy Policy</a>
+                    <a href="#" class="about-link">Terms of Service</a>
+                    <a href="#" class="about-link">Open Source</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-icon">💬</span>
+                <span class="logo-text">One Message</span>
+            </div>
+            <p class="footer-copyright">© 2026 The One Atom. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#" aria-label="Twitter">𝕏</a>
+                <a href="#" aria-label="GitHub">⌂</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
