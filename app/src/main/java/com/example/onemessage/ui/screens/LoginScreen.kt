@@ -353,13 +353,13 @@ fun LoginScreen(onLoginSuccess: () -> Unit = {}) {
                                                 errorMessage = null
                                         },
                                         onVerifyOtp = {
-                                                if (otpCode.length == 6) {
+                                                if (otpCode.length == 4) {
                                                         isLoading = true
                                                         // TODO: Call backend to verify OTP
                                                         // For now, simulate success
                                                         onLoginSuccess()
                                                 } else {
-                                                        errorMessage = "Please enter a 6-digit code"
+                                                        errorMessage = "Please enter a 4-digit code"
                                                 }
                                         },
                                         onResendOtp = {
@@ -764,43 +764,43 @@ private fun OtpInput(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // OTP boxes
-                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        repeat(6) { index ->
+                // OTP boxes (4 digits)
+                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        repeat(4) { index ->
                                 val char = otpCode.getOrNull(index)?.toString() ?: ""
                                 Box(
                                         modifier =
-                                                Modifier.size(48.dp)
+                                                Modifier.size(56.dp)
                                                         .background(
                                                                 if (char.isNotEmpty())
                                                                         OneMessageColors
                                                                                 .GlassBgHover
                                                                 else OneMessageColors.GlassBg,
-                                                                RoundedCornerShape(12.dp)
+                                                                RoundedCornerShape(14.dp)
                                                         )
                                                         .border(
                                                                 1.dp,
                                                                 if (index == otpCode.length)
                                                                         OneMessageColors.White
                                                                 else OneMessageColors.GlassBorder,
-                                                                RoundedCornerShape(12.dp)
+                                                                RoundedCornerShape(14.dp)
                                                         ),
                                         contentAlignment = Alignment.Center
                                 ) {
                                         Text(
                                                 text = char,
-                                                style = MaterialTheme.typography.headlineMedium,
+                                                style = MaterialTheme.typography.headlineLarge,
                                                 color = OneMessageColors.TextPrimary
                                         )
                                 }
                         }
                 }
 
-                // Hidden text field for OTP input
+                // Hidden text field for OTP input (4 digits)
                 BasicTextField(
                         value = otpCode,
                         onValueChange = {
-                                if (it.length <= 6 && it.all { c -> c.isDigit() }) onOtpChange(it)
+                                if (it.length <= 4 && it.all { c -> c.isDigit() }) onOtpChange(it)
                         },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.size(1.dp)
@@ -833,7 +833,7 @@ private fun OtpInput(
                 // Verify button
                 Button(
                         onClick = onVerifyOtp,
-                        enabled = otpCode.length == 6 && !isLoading,
+                        enabled = otpCode.length == 4 && !isLoading,
                         modifier = Modifier.fillMaxWidth().height(56.dp),
                         shape = RoundedCornerShape(28.dp),
                         colors =
